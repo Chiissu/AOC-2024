@@ -12,11 +12,22 @@ class Main {
 				return Std.parseInt(s);
 			});
 
-			if (isGood(nums))
+			if (isGoodPermissive(nums))
 				res++;
 		}
 
 		trace(res);
+	}
+
+	static function isGoodPermissive(list:Array<Int>):Bool {
+		for (i in 0...list.length) {
+			var listCp = list.copy();
+			listCp.splice(i, 1);
+			if (isGood(listCp)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	static function isGood(list:Array<Int>):Bool {
